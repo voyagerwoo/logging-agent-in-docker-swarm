@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  agent:
+    image: voyagerwoo/docker-logging-agent:${TAG} 
+    environment:
+      LOG_LEVEL: debug
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.platform.os == linux]
+
